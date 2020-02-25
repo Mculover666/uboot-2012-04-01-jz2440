@@ -168,18 +168,17 @@ copyex:
 # endif
 
 #if defined(CONFIG_S3C2410)
-	/* FCLK:HCLK:PCLK = 1:2:4 */
-	/* default FCLK is 120 MHz ! */
-	ldr	r0, =CLKDIVN
-	mov	r1, #3
-	str	r1, [r0]
-#elif defined(CONFIG_S3C2440)
 	/* 自己添加的S3C2440时钟分频系数配置 */
-	/* FCLK:HCLK:PCLK = =8:4:1 */
+	/* FCLK:HCLK:PCLK = =1:4:8 */
 	/* default FCLK is 400 MHz ! */
 	ldr	r0, =CLKDIVN
 	mov	r1, #5
 	str	r1, [r0]
+
+	/* HDIVN不为0，设置CPU为异步模式（来源芯片手册）*/
+	mrc p15,0,r0,c1,c0,0
+	orr r0,r0,#0xc0000000  @#R1_nF:OR:R1_iA
+	mcr p15,0,r0,c1,c0,0
 #endif 
 
 #endif	/* CONFIG_S3C24X0 */

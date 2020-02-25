@@ -38,9 +38,9 @@ DECLARE_GLOBAL_DATA_PTR;
 #define M_MDIV	0xC3
 #define M_PDIV	0x4
 #define M_SDIV	0x1
-#elif FCLK_SPEED==1		/* Fout = 202.8MHz */
-#define M_MDIV	0xA1
-#define M_PDIV	0x3
+#elif FCLK_SPEED==1		/* Fout = 400MHz */
+#define M_MDIV	0x5c
+#define M_PDIV	0x1
 #define M_SDIV	0x1
 #endif
 
@@ -74,9 +74,12 @@ int board_early_init_f(void)
 	struct s3c24x0_gpio * const gpio = s3c24x0_get_base_gpio();
 
 	/* to reduce PLL lock time, adjust the LOCKTIME register */
+	//不用修改
 	writel(0xFFFFFF, &clk_power->locktime);
 
 	/* configure MPLL */
+	//置MPLL，输出FCLK=400Mhz：(92<<12)|(1<<4)|(1<<0)
+	//根据此值修改M_MDIV、M_PDIV、M_SDIV
 	writel((M_MDIV << 12) + (M_PDIV << 4) + M_SDIV,
 	       &clk_power->mpllcon);
 
@@ -84,6 +87,7 @@ int board_early_init_f(void)
 	pll_delay(4000);
 
 	/* configure UPLL */
+	//UPLL暂未用到，先不管
 	writel((U_M_MDIV << 12) + (U_M_PDIV << 4) + U_M_SDIV,
 	       &clk_power->upllcon);
 

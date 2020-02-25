@@ -167,11 +167,21 @@ copyex:
 	str	r1, [r0]
 # endif
 
+#if defined(CONFIG_S3C2410)
 	/* FCLK:HCLK:PCLK = 1:2:4 */
 	/* default FCLK is 120 MHz ! */
 	ldr	r0, =CLKDIVN
 	mov	r1, #3
 	str	r1, [r0]
+#elif defined(CONFIG_S3C2440)
+	/* 自己添加的S3C2440时钟分频系数配置 */
+	/* FCLK:HCLK:PCLK = =8:4:1 */
+	/* default FCLK is 400 MHz ! */
+	ldr	r0, =CLKDIVN
+	mov	r1, #5
+	str	r1, [r0]
+#endif 
+
 #endif	/* CONFIG_S3C24X0 */
 
 	/*

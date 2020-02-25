@@ -167,7 +167,7 @@ copyex:
 	str	r1, [r0]
 # endif
 
-#if defined(CONFIG_S3C2410)
+#if defined(CONFIG_S3C2440)
 	/* 自己添加的S3C2440时钟分频系数配置 */
 	/* FCLK:HCLK:PCLK = =1:4:8 */
 	/* default FCLK is 400 MHz ! */
@@ -177,7 +177,7 @@ copyex:
 
 	/* HDIVN不为0，设置CPU为异步模式（来源芯片手册）*/
 	mrc p15,0,r0,c1,c0,0
-	orr r0,r0,#0xc0000000  @#R1_nF:OR:R1_iA
+	orr r0,r0,#0xc0000000
 	mcr p15,0,r0,c1,c0,0
 #endif 
 

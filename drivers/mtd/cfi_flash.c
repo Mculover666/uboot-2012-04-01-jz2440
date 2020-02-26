@@ -32,7 +32,10 @@
  */
 
 /* The DEBUG define must be before common to enable debugging */
-/* #define DEBUG	*/
+/* #define DEBUG */
+//#define DEBUG
+//#define _DEBUG 1
+
 
 #include <common.h>
 #include <asm/processor.h>
@@ -1637,7 +1640,6 @@ static int cmdset_amd_init(flash_info_t *info, struct cfi_qry *qry)
 
 	return 0;
 }
-
 #ifdef CONFIG_FLASH_CFI_LEGACY
 static void flash_read_jedec_ids (flash_info_t * info)
 {
@@ -1821,7 +1823,7 @@ static int flash_detect_cfi (flash_info_t * info, struct cfi_qry *qry)
 	     info->portwidth <= FLASH_CFI_64BIT; info->portwidth <<= 1) {
 		for (info->chipwidth = FLASH_CFI_BY8;
 		     info->chipwidth <= info->portwidth;
-		     info->chipwidth <<= 1)
+		     info->chipwidth <<= 1) 
 			if (__flash_detect_cfi(info, qry))
 				return 1;
 	}

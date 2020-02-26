@@ -74,6 +74,8 @@
 
 /* MXIC */
 #define MX29LV040	0x004F
+//JZ2440开发板板载Nor Flash
+#define MX29LV160DBTI	0x2249	
 
 /* WINBOND */
 #define W39L040A	0x00D6
@@ -364,6 +366,28 @@ static const struct amd_flash_info jedec_table[] = {
 			ERASEINFO(0x02000, 2),
 			ERASEINFO(0x08000, 1),
 			ERASEINFO(0x10000, 7),
+		}
+	},
+	
+#endif
+
+/* JZ2440开发板板载NoR FLASH */
+#ifdef CONFIG_SYS_FLASH_LEGACY_1024Kx16
+	{
+		.mfr_id		= (u8)MX_MANUFACT,
+		.dev_id		= MX29LV160DBTI,
+		.name		= "MX MX29LV160DBTI",
+		.uaddr		= {
+			[1] = MTD_UADDR_0x0555_0x02AA /* x16 */
+		},
+		.DevSize		= SIZE_2MiB,
+		.CmdSet			= CFI_CMDSET_AMD_LEGACY,
+		.NumEraseRegions	= 4,
+		.regions		= {
+			ERASEINFO(16*1024, 1),
+			ERASEINFO(8*1024, 2),
+			ERASEINFO(32*1024, 1),
+			ERASEINFO(64*1024, 31),
 		}
 	},
 #endif

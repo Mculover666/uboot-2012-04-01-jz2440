@@ -211,7 +211,6 @@ int board_nand_init(struct nand_chip *nand)
 
 	nand->dev_ready = s3c2440_dev_ready;
 
-/* 硬件ECC代码逻辑有误，暂不使用 */
 #ifdef CONFIG_S3C2440_NAND_HWECC
 	nand->ecc.hwctl = s3c2440_nand_enable_hwecc;
 	nand->ecc.calculate = s3c2440_nand_calculate_ecc;

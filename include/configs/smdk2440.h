@@ -72,15 +72,15 @@
 /************************************************************
  * USB support (currently only works with D-cache off)
  ************************************************************/
-#define CONFIG_USB_OHCI
-#define CONFIG_USB_KEYBOARD
-#define CONFIG_USB_STORAGE
-#define CONFIG_DOS_PARTITION
+// #define CONFIG_USB_OHCI
+// #define CONFIG_USB_KEYBOARD
+// #define CONFIG_USB_STORAGE
+// #define CONFIG_DOS_PARTITION
 
 /************************************************************
  * RTC
  ************************************************************/
-#define CONFIG_RTC_S3C24X0
+//#define CONFIG_RTC_S3C24X0
 
 
 #define CONFIG_BAUDRATE		115200
@@ -88,10 +88,10 @@
 /*
  * BOOTP options
  */
-#define CONFIG_BOOTP_BOOTFILESIZE
-#define CONFIG_BOOTP_BOOTPATH
-#define CONFIG_BOOTP_GATEWAY
-#define CONFIG_BOOTP_HOSTNAME
+// #define CONFIG_BOOTP_BOOTFILESIZE
+// #define CONFIG_BOOTP_BOOTPATH
+// #define CONFIG_BOOTP_GATEWAY
+// #define CONFIG_BOOTP_HOSTNAME
 
 /*
  * Command line configuration.
@@ -100,13 +100,13 @@
 
 #define CONFIG_CMD_BSP
 #define CONFIG_CMD_CACHE
-#define CONFIG_CMD_DATE
-#define CONFIG_CMD_DHCP
+//#define CONFIG_CMD_DATE
+//#define CONFIG_CMD_DHCP
 #define CONFIG_CMD_ELF
 #define CONFIG_CMD_NAND
 #define CONFIG_CMD_PING
 #define CONFIG_CMD_REGINFO
-#define CONFIG_CMD_USB
+//#define CONFIG_CMD_USB
 
 #define CONFIG_SYS_HUSH_PARSER
 #define CONFIG_SYS_PROMPT_HUSH_PS2	"> "
@@ -229,13 +229,13 @@
  */
 //#define CONFIG_CMD_FAT
 //#define CONFIG_CMD_EXT2
-#define CONFIG_CMD_UBI
+//#define CONFIG_CMD_UBI
 //#define CONFIG_CMD_UBIFS
-#define CONFIG_CMD_MTDPARTS
-#define CONFIG_MTD_DEVICE
-#define CONFIG_MTD_PARTITIONS
+//#define CONFIG_CMD_MTDPARTS
+//#define CONFIG_MTD_DEVICE
+//#define CONFIG_MTD_PARTITIONS
 //#define CONFIG_YAFFS2
-#define CONFIG_RBTREE
+//#define CONFIG_RBTREE
 
 /* additions for new relocation code, must be added to all boards */
 #define CONFIG_SYS_SDRAM_BASE	PHYS_SDRAM_1

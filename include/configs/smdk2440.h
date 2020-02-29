@@ -231,8 +231,15 @@
 //#define CONFIG_CMD_EXT2
 //#define CONFIG_CMD_UBI
 //#define CONFIG_CMD_UBIFS
-//#define CONFIG_CMD_MTDPARTS
-//#define CONFIG_MTD_DEVICE
+#define CONFIG_CMD_MTDPARTS
+#define CONFIG_MTD_DEVICE
+#define MTDIDS_DEFAULT			"nand0=jz2440_nand.0"
+#define MTDPARTS_DEFAULT		"mtdparts=jz2440_nand.0:"	\
+								"256k(uboot)ro,"	\
+								"128k(params)ro,"	\
+								"2m(kernel),"		\
+								"-(filesystem)"
+
 //#define CONFIG_MTD_PARTITIONS
 //#define CONFIG_YAFFS2
 //#define CONFIG_RBTREE

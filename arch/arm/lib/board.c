@@ -647,6 +647,9 @@ void board_init_r(gd_t *id, ulong dest_addr)
 	}
 #endif
 
+	//手动加入需要执行的命令
+	run_command("mtdparts default", 0);
+
 	/* main_loop() can return to retry autoboot, if so just run it again. */
 	for (;;) {
 		main_loop();

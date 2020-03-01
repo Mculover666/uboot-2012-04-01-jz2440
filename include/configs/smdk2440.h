@@ -118,11 +118,17 @@
 #define CONFIG_RESET_TO_RETRY
 #define CONFIG_ZERO_BOOTDELAY_CHECK
 
+
+/* 内核启动相关ENV */
+#define CONFIG_BOOTARGS		"console=ttySAC0,115200 root=/dev/mtdblock3"
+#define	CONFIG_BOOTCOMMAND	"nand read 30000000 kernel 0x200000;bootm 30000000"
+
+/* 网络相关ENV */
 #define CONFIG_NETMASK		255.255.255.0
-#define CONFIG_IPADDR		192.168.0.106
-#define CONFIG_SERVERIP		192.168.0.100
+#define CONFIG_IPADDR		192.168.1.6
+#define CONFIG_SERVERIP		192.168.1.3
 #define CONFIG_ETHADDR		52:54:00:7c:df:b7
-#define CONFIG_GATEWAYIP	192.168.0.1
+#define CONFIG_GATEWAYIP	192.168.1.1
 
 #if defined(CONFIG_CMD_KGDB)
 #define CONFIG_KGDB_BAUDRATE	115200	/* speed to run kgdb serial port */
@@ -197,11 +203,16 @@
 #define CONFIG_SYS_FLASH_BANKS_LIST     { CONFIG_SYS_FLASH_BASE }
 #define CONFIG_SYS_MAX_FLASH_SECT	(36)
 
-#define CONFIG_ENV_ADDR			(CONFIG_SYS_FLASH_BASE + 0x070000)
-#define CONFIG_ENV_IS_IN_FLASH
-#define CONFIG_ENV_SIZE			0x10000
-/* allow to overwrite serial and ethaddr */
-#define CONFIG_ENV_OVERWRITE
+// #define CONFIG_ENV_IS_IN_FLASH
+// #define CONFIG_ENV_ADDR			(CONFIG_SYS_FLASH_BASE + 0x40000)
+//  #define CONFIG_ENV_SIZE		0x20000
+// /* allow to overwrite serial and ethaddr */
+// #define CONFIG_ENV_OVERWRITE
+
+#define CONFIG_ENV_IS_IN_NAND
+#define CONFIG_ENV_OFFSET	0x40000
+#define CONFIG_ENV_SIZE		0x20000
+#define CONFIG_ENV_RANGE	0x20000
 
 /*
  * Size of malloc() pool

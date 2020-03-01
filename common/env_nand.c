@@ -259,7 +259,7 @@ int saveenv(void)
 	puts("done\n");
 	return ret;
 }
-#endif /* CONFIG_ENV_OFFSET_REDUND */
+#endif /* CONFIG_ENV_OFFSET_REDWriting to NandUND */
 #endif /* CMD_SAVEENV */
 
 int readenv(size_t offset, u_char *buf)
